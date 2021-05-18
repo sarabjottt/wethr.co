@@ -88,22 +88,22 @@ module.exports = async (req, res) => {
   if (search) {
     try {
       const searchData = await getSearchData(search);
-      res.status(200).send(searchData);
+      return res.status(200).send(searchData);
     } catch (error) {
-      res.status(500).send(error.name.toString());
+      return res.status(500).send(error.name.toString());
     }
   }
   if (region === 'true') {
     try {
       const regionData = await getRegion(clientIP);
-      res.status(200).send(regionData);
+      return res.status(200).send(regionData);
     } catch (error) {
-      res.status(500).send(error.name.toString());
+      return res.status(500).send(error.name.toString());
     }
   }
 
   if (!lat || !long) {
-    res
+    return res
       .status(500)
       .send('Error: Missing Latitude (and/or) Longitude attributes');
   }
@@ -114,8 +114,8 @@ module.exports = async (req, res) => {
       weatherData,
       locationData,
     };
-    res.status(200).send(data);
+    return res.status(200).send(data);
   } catch (err) {
-    res.status(500).send(err.toString());
+    return res.status(500).send(err.toString());
   }
 };
