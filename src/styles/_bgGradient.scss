@@ -1,0 +1,72 @@
+.bg-clear-day {
+  background-image: linear-gradient(180deg, #ffecb1 0%, #ffa991 100%);
+}
+.bg-clear-night {
+  color: $color-white;
+  background-image: linear-gradient(0deg, #1b2e35 0%, #00203c 100%);
+}
+.bg-rain {
+  background-image: linear-gradient(180deg, #38e6f1 0%, #0089ff 100%);
+}
+.bg-snow {
+  background-image: linear-gradient(190deg, #89f7fe 0%, #66a6ff 100%);
+}
+.bg-sleet {
+  background-image: linear-gradient(180deg, #a4faff 0%, #3a8bd0 100%);
+}
+.bg-wind {
+  background-image: linear-gradient(190deg, #dcdcdc 0%, #f1f1f1 100%);
+}
+.bg-fog {
+  background-image: linear-gradient(190deg, #89f7fe 0%, #66a6ff 100%);
+}
+.bg-cloudy {
+  background-image: linear-gradient(45deg, #82bfdc 0%, #e4efe9 100%);
+}
+.bg-partly-cloudy-day {
+  background-image: linear-gradient(190deg, #89f7fe 0%, #66a6ff 100%);
+  color: $text-black;
+}
+.bg-partly-cloudy-night {
+  background-image: linear-gradient(0deg, #007680 0%, #4e1396 100%);
+  color: $color-white;
+}
+.bg-thunderstorm {
+  background-image: linear-gradient(0deg, #ff2da1 0%, #dbbfff 100%);
+  color: $color-white;
+}
+.icon-container {
+  .clear-day {
+    background-image: url(/assets/clear-day.svg);
+  }
+  .clear-night {
+    background-image: url(/assets/clear-night.svg);
+  }
+  .rain {
+    background-image: url(/assets/rain.svg);
+  }
+  // .snow {
+  //   background-image: url(/assets/snow.svg);
+  // }
+  .sleet {
+    background-image: url(/assets/sleet.svg);
+  }
+  .wind {
+    background-image: url(/assets/wind.svg);
+  }
+  .fog {
+    background-image: url(/assets/wind.svg);
+  }
+  .cloudy {
+    background-image: url(/assets/cloudy.svg);
+  }
+  .partly-cloudy-day {
+    background-image: url(/assets/partly-cloudy-day.svg);
+  }
+  .partly-cloudy-night {
+    background-image: url(/assets/partly-cloudy-night.svg);
+  }
+  .thunderstorm {
+    background-image: url(/assets/thunderstorm.svg);
+  }
+}

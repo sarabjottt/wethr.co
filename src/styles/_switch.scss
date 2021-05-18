@@ -1,0 +1,21 @@
+.switch-toggle {
+  width: 40px;
+  height: 40px;
+}
+
+.switch-text {
+  color: $text-black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  user-select: none;
+}
+
+// ------------------------------------
+
+.switch-toggle-mobile {
+  display: none;
+}
