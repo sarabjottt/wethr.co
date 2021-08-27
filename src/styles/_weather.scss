@@ -9,14 +9,16 @@
   min-height: 730px;
   @include for-mobile {
     padding: 10px;
+    padding-left: 20px;
   }
 }
-
+@include for-mobile {
+  .search-container {
+    margin-left: -10px;
+  }
+}
 .hero-container {
   margin: 30px 0;
-  @include for-mobile {
-    margin-left: 10px;
-  }
   h1 {
     font-size: 8rem;
     font-weight: bold;
@@ -29,13 +31,12 @@
   margin: 10px 0;
   max-width: 500px;
   width: 100%;
+  @include for-mobile {
+    margin-left: -10px;
+  }
 }
 .meta-container {
   display: flex;
-  margin: 20px;
-  @include for-mobile {
-    margin-left: 10px;
-  }
   ul {
     li {
       list-style-type: none;
@@ -54,7 +55,10 @@
   top: 50px;
   right: 50px;
   width: 30%;
-  height: 30%;
+  height: 300px;
+  @include for-mobile {
+    right: 30px;
+  }
   .weather-icon {
     background-repeat: no-repeat;
     background-size: contain;
@@ -63,23 +67,23 @@
     height: 100%;
   }
 }
+.hour-summery-container {
+  font-size: 1.5rem;
+  max-width: 500px;
+}
 .summery-container {
+  display: none;
   @include for-desktop {
+    display: block;
+    text-align: right;
     position: absolute;
     bottom: 30px;
     right: 30px;
     left: 30%;
   }
-  position: initial;
-  margin-left: 10px;
-
   h2 {
     opacity: 0.2;
     line-height: 1;
-    font-size: 3rem;
-    @include for-desktop {
-      font-size: 10vw;
-      text-align: right;
-    }
+    font-size: 10vw;
   }
 }

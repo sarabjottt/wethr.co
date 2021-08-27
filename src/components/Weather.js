@@ -10,22 +10,19 @@ export default function Weather() {
     isFern,
     setIsFern,
     weather: {
-      weatherData: { currently },
+      weatherData: { currently: c, hourly },
     },
   } = useContext(GlobalState);
 
   return (
-    <div className={`app-wrapper bg-${currently.icon}`}>
+    <div className={`app-wrapper bg-${c.icon}`}>
       <div className="search-container">
         <Search />
       </div>
       <div className="hero-container">
         <div className="current-temp">
           <h1>
-            {isFern
-              ? Math.round(currently.temperature)
-              : toCelsius(currently.temperature)}
-            °
+            {isFern ? Math.round(c.temperature) : toCelsius(c.temperature)}°
           </h1>
         </div>
         <div className="apparent-temp">
@@ -33,15 +30,15 @@ export default function Weather() {
             Feels like{' '}
             <b>
               {isFern
-                ? Math.round(currently.apparentTemperature)
-                : toCelsius(currently.apparentTemperature)}
+                ? Math.round(c.apparentTemperature)
+                : toCelsius(c.apparentTemperature)}
               °
             </b>
           </p>
         </div>
       </div>
-      <div className="summery-container">
-        <h2>{currently.summary}</h2>
+      <div className="hour-summery-container">
+        <p>{hourly.summary}</p>
       </div>
       <div className="chart-container">
         <Chart />
@@ -54,10 +51,18 @@ export default function Weather() {
           <li>Rain</li>
         </ul>
         <ul className="meta-value">
-          <li>{Math.round(currently.humidity * 100)}%</li>
-          <li>{Math.round(currently.visibility * 1.609)} km</li>
-          <li>{Math.round(currently.windSpeed * 1.609)} k/h</li>
-          <li>{Math.round(currently.precipProbability * 100)}%</li>
+          <li>{Math.round(c.humidity * 100)}%</li>
+          {isFern ? (
+            <li>{Math.round(c.visibility)} mph</li>
+          ) : (
+            <li>{Math.round(c.visibility * 1.609)} km/h</li>
+          )}
+          {isFern ? (
+            <li>{Math.round(c.windSpeed)} mph</li>
+          ) : (
+            <li>{Math.round(c.windSpeed * 1.609)} km/h</li>
+          )}
+          <li>{Math.round(c.precipProbability * 100)}%</li>
         </ul>
       </div>
       <div className="switch-container">
@@ -70,7 +75,10 @@ export default function Weather() {
         />
       </div>
       <div className="icon-container">
-        <div className={`weather-icon ${currently.icon}`} />
+        <div className={`weather-icon ${c.icon}`} />
+      </div>
+      <div className="summery-container">
+        <h2>{c.summary}</h2>
       </div>
     </div>
   );

@@ -76,11 +76,11 @@ export default function Chart() {
             </Area>
           )}
           <XAxis
-            axisLine={false}
+            axisLine
             stroke={theme.font}
             strokeOpacity={0.5}
             tick={{ fill: theme.font, fontSize: '0.7rem' }}
-            interval={0}
+            interval={1}
             dataKey="time"
           />
           {showRain && <YAxis hide domain={[0, 100]} />}
