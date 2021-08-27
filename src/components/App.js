@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GlobalState, themes } from './GlobalState';
 import Weather from './Weather';
 import { getLS, setLS } from './Helper';
+import Loading from './Loading';
 
 export default function App() {
   const [isFern, setIsFern] = useState(false);
@@ -54,11 +55,6 @@ export default function App() {
       <Weather />
     </GlobalState.Provider>
   ) : (
-    <div className="loading">
-      <div className="card">
-        <h1>Weather Forecast</h1>
-        <h2>Allow location to access.</h2>
-      </div>
-    </div>
+    <Loading />
   );
 }
