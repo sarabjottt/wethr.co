@@ -85,7 +85,6 @@ module.exports = async (req, res) => {
   const { search } = req.query;
   const clientIP =
     req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log(req);
   if (search) {
     try {
       const searchData = await getSearchData(search);

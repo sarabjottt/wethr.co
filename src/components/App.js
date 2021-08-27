@@ -10,13 +10,11 @@ export default function App() {
   const [theme, setTheme] = useState(themes.light);
 
   function fetchWeather(lat, long) {
-    const api = `/api/getWeather?lat=${lat}&long=${long}`;
-    const apiRegion = `/api/getWeather?region=true`;
-    console.log('function called...');
-    fetch(!lat ? apiRegion : api)
+    const dataLatLong = `/api/getWeather?lat=${lat}&long=${long}`;
+    const dataRegion = `/api/getWeather?region=true`;
+    fetch(!lat ? dataRegion : dataLatLong)
       .then(res => res.json())
       .then(data => {
-        console.log('Data:', data);
         setWeather(data);
         setLS('localData', data);
         setLS('lastCached', Date.now());
@@ -41,10 +39,8 @@ export default function App() {
   useEffect(() => {
     const strings = ['clear-night', 'partly-cloudy-night', 'thunderstorm'];
     if (weather && strings.includes(weather.weatherData.currently.icon)) {
-      console.log('its dark time');
       setTheme(themes.dark);
     } else {
-      console.log('its light time');
       setTheme(themes.light);
     }
   }, [weather]);

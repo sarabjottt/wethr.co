@@ -18,10 +18,10 @@ export default function Search() {
   const [error, setError] = useState({ query: false, location: true });
 
   function fetchWeather(lat, long, query) {
-    const api = `/api/getWeather?lat=${lat}&long=${long}`;
-    const apiSearch = `/api/getWeather?search=${query}`;
+    const dataLatLong = `/api/getWeather?lat=${lat}&long=${long}`;
+    const dataQuery = `/api/getWeather?search=${query}`;
     setIsLoading(true);
-    fetch(!query ? api : apiSearch)
+    fetch(!query ? dataLatLong : dataQuery)
       .then(res => res.json())
       .then(data => {
         const formatQuery = data.locationData.formatString;
@@ -60,13 +60,11 @@ export default function Search() {
         position => {
           const long = position.coords.longitude;
           const lat = position.coords.latitude;
-          console.log(position);
           setError({ ...error, location: false });
           setLS('locationAccess', true);
           fetchWeather(lat, long, null);
         },
-        e => {
-          console.log(e);
+        () => {
           setError({ ...error, location: true });
           localStorage.removeItem('locationAccess');
         }
