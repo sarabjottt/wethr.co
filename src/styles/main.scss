@@ -61,6 +61,10 @@ button {
     opacity: 1;
   }
 }
+::selection {
+  color: #dbd187;
+  background-color: #2f8672;
+}
 @import "switch";
 @import "media";
 @import "search";

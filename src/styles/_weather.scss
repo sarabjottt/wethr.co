@@ -68,6 +68,7 @@
     position: absolute;
     bottom: 30px;
     right: 30px;
+    left: 30%;
   }
   position: initial;
   margin-left: 10px;
@@ -78,6 +79,7 @@
     font-size: 3rem;
     @include for-desktop {
       font-size: 10vw;
+      text-align: right;
     }
   }
 }
