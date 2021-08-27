@@ -62,23 +62,17 @@
     border: 1px solid $border-err-red-s;
     &::before {
       content: "";
-      width: 0px;
-      height: 0px;
+      width: 6px;
+      height: 6px;
       position: absolute;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
       transform: rotate(45deg);
-      top: -4px;
+      top: -4.2px;
       left: 20px;
-      border: 3px solid $border-err-red-s;
-    }
-    &::after {
-      content: "";
-      width: 0;
-      height: 0;
-      position: absolute;
-      transform: rotate(45deg);
-      top: -3.5px;
-      left: 20px;
-      border: 3px solid $background-err-red;
+      border-left: 1px solid $border-err-red-s;
+      background-color: $background-err-red;
+      border-top: 1px solid $border-err-red-s;
     }
     &.location-tip {
       animation: none;

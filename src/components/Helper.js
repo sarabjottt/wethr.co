@@ -1,7 +1,7 @@
 import React from 'react';
 
-export function toCelsius(ferenheit) {
-  return Math.round(((ferenheit - 32) * 5) / 9);
+export function toCelsius(fahrenheit) {
+  return Math.round(((fahrenheit - 32) * 5) / 9);
 }
 export function setLS(key, data) {
   const dataToSet = JSON.stringify(data);

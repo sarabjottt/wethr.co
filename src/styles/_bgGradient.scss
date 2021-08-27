@@ -1,38 +1,38 @@
 .bg-clear-day {
-  background-image: linear-gradient(180deg, #ffecb1 0%, #ffa991 100%);
+  background-image: linear-gradient(180deg, #ffe4a3 0%, #ffb591 100%);
 }
 .bg-clear-night {
   color: $color-white;
-  background-image: linear-gradient(0deg, #1b2e35 0%, #00203c 100%);
+  background-image: linear-gradient(0deg, #0e3d59 0%, #000c17 100%);
 }
 .bg-rain {
-  background-image: linear-gradient(180deg, #38e6f1 0%, #0089ff 100%);
+  background-image: linear-gradient(180deg, #1ac5e1 0%, #2d97f4 100%);
 }
 .bg-snow {
-  background-image: linear-gradient(190deg, #89f7fe 0%, #66a6ff 100%);
+  background-image: linear-gradient(190deg, #8df4fb 0%, #e2e2e2 60%);
 }
 .bg-sleet {
-  background-image: linear-gradient(180deg, #a4faff 0%, #3a8bd0 100%);
+  background-image: linear-gradient(180deg, #95fdef 0%, #69bfe0 100%);
 }
 .bg-wind {
   background-image: linear-gradient(190deg, #dcdcdc 0%, #f1f1f1 100%);
 }
 .bg-fog {
-  background-image: linear-gradient(190deg, #89f7fe 0%, #66a6ff 100%);
+  background-image: linear-gradient(190deg, #b3dfe2 0%, #a8acb1 100%);
 }
 .bg-cloudy {
-  background-image: linear-gradient(45deg, #82bfdc 0%, #e4efe9 100%);
+  background-image: linear-gradient(45deg, #9ea7ab 0%, #bfccd4 100%);
 }
 .bg-partly-cloudy-day {
-  background-image: linear-gradient(190deg, #89f7fe 0%, #66a6ff 100%);
+  background-image: linear-gradient(190deg, #90d8e8 0%, #83a7af 100%);
   color: $text-black;
 }
 .bg-partly-cloudy-night {
-  background-image: linear-gradient(0deg, #007680 0%, #4e1396 100%);
+  background-image: linear-gradient(0deg, #0e3d59 0%, #071d31 100%);
   color: $color-white;
 }
 .bg-thunderstorm {
-  background-image: linear-gradient(0deg, #ff2da1 0%, #dbbfff 100%);
+  background-image: linear-gradient(209deg, #a22cab 0%, #5410c1 100%);
   color: $color-white;
 }
 .icon-container {
@@ -45,9 +45,9 @@
   .rain {
     background-image: url(/assets/rain.svg);
   }
-  // .snow {
-  //   background-image: url(/assets/snow.svg);
-  // }
+  .snow {
+    background-image: url(/assets/snow.svg);
+  }
   .sleet {
     background-image: url(/assets/sleet.svg);
   }
