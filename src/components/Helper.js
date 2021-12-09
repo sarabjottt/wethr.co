@@ -20,6 +20,7 @@ export function clearCache() {
 
 export const LoadingIcon = ({ size = 24, color = '#000000' }) => (
   <svg
+    title="Loading Icon"
     className="loading-icon"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -35,6 +36,7 @@ export const LoadingIcon = ({ size = 24, color = '#000000' }) => (
 );
 export const SearchIcon = ({ size = 24, color = '#000000' }) => (
   <svg
+    title="Search Icon"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -44,12 +46,13 @@ export const SearchIcon = ({ size = 24, color = '#000000' }) => (
     strokeWidth="1"
     strokeLinecap="round"
     strokeLinejoin="round">
-    <circle cx="11" cy="11" r="8"></circle>
-    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
   </svg>
 );
 export const LocationIcon = ({ size = 24, color = '#000000' }) => (
   <svg
+    title="Location Icon"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -63,3 +66,35 @@ export const LocationIcon = ({ size = 24, color = '#000000' }) => (
     <circle cx="12" cy="10" r="3" />
   </svg>
 );
+
+export const Favicon = icon => {
+  console.log(icon);
+  switch (icon) {
+    case 'clear-day':
+      return '/favicons/clear-day.png';
+    case 'clear-night':
+      return '/favicons/clear-night.png';
+    case 'rain':
+      return '/favicons/rain.png';
+    case 'snow':
+      return '/favicons/snow.png';
+    case 'sleet':
+      return '/favicons/sleet.png';
+    case 'wind':
+      return '/favicons/wind.png';
+    case 'fog':
+      return '/favicons/fog.png';
+    case 'cloudy':
+      return '/favicons/cloud.png';
+    case 'partly-cloudy-night':
+      return '/favicons/partly-cloudy-night.png';
+    case 'partly-cloudy-day':
+      return '/favicons/partly-cloudy-day.png';
+    case 'thunderstorm':
+      return '/favicons/thunderstorm.png';
+    case 'tornado':
+      return '/favicons/tornado.png';
+    default:
+      return '/favicons/clear-day.png';
+  }
+};
