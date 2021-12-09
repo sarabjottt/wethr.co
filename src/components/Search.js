@@ -1,13 +1,21 @@
 import React, { useState, useContext } from 'react';
 import Head from 'next/head';
 import { GlobalState } from './GlobalState';
-import { getLS, setLS, LoadingIcon, SearchIcon, LocationIcon } from './Helper';
+import {
+  getLS,
+  setLS,
+  LoadingIcon,
+  SearchIcon,
+  LocationIcon,
+  Favicon,
+} from './Helper';
 
 export default function Search() {
   const {
     setWeather,
     weather: {
       locationData: { formatString },
+      weatherData: { currently },
     },
   } = useContext(GlobalState);
 
@@ -76,9 +84,11 @@ export default function Search() {
       <Head>
         {formatString && (
           <title>
-            {getLS('searchQuery') || formatString} - Weather Forecast | Whter.co
+            {getLS('searchQuery') || formatString} - Weather Forecast | wethr.co
           </title>
         )}
+        {console.log(Favicon(currently.icon))}
+        <link rel="shortcut icon" href={Favicon(currently.icon)} />
       </Head>
       <form className={error.query ? 'error' : ''} onSubmit={handleSearch}>
         <input
@@ -96,12 +106,16 @@ export default function Search() {
           value=""
           name="search"
         />
-        <label className="search-icon" htmlFor="search-submit">
+        <label
+          aria-label={isLoading ? 'Loading' : 'Search'}
+          className="search-icon"
+          htmlFor="search-submit">
           {isLoading ? <LoadingIcon /> : <SearchIcon />}
         </label>
         {error.query && <span>Please enter minimum 3 characters.</span>}
       </form>
       <button
+        aria-label="Auto Locate"
         id={!error.location ? 'given' : 'denied'}
         className="locate-btn"
         type="button"
@@ -109,7 +123,7 @@ export default function Search() {
         <LocationIcon />
       </button>
       {error.location && (
-        <span className="location-tip">
+        <span aria-label="location error" className="location-tip">
           Allow location access from your browser.
         </span>
       )}
