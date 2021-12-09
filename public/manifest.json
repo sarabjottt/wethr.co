@@ -1,10 +1,11 @@
 {
-  "short_name": "Weather",
-  "name": "Weather App",
+  "short_name": "wethr.co",
+  "name": "wethr.co",
+  "description": "A minimal weather app",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
@@ -19,6 +20,7 @@
     }
   ],
   "start_url": ".",
+  "orientation": "portrait",
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff"
