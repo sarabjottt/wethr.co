@@ -31,6 +31,9 @@
   margin: 10px 0;
   max-width: 500px;
   width: 100%;
+  .recharts-wrapper {
+    cursor: pointer !important;
+  }
   @include for-mobile {
     margin-left: -10px;
   }
