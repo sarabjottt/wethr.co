@@ -15,7 +15,9 @@ export default function Weather() {
   } = useContext(GlobalState);
 
   return (
-    <div className={`app-wrapper bg-${c.icon}`}>
+    <div
+      style={{ minHeight: window.outerHeight }}
+      className={`app-wrapper bg-${c.icon}`}>
       <div className="search-container">
         <Search />
       </div>

@@ -68,7 +68,6 @@ export const LocationIcon = ({ size = 24, color = '#000000' }) => (
 );
 
 export const Favicon = icon => {
-  console.log(icon);
   switch (icon) {
     case 'clear-day':
       return '/favicons/clear-day.png';
