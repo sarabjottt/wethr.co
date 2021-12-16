@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import Head from 'next/head';
 import { GlobalState } from './GlobalState';
 import {
@@ -9,6 +9,7 @@ import {
   LocationIcon,
   Favicon,
 } from './Helper';
+import RecentSearch from './RecentSearch';
 
 export default function Search() {
   const {
@@ -22,13 +23,17 @@ export default function Search() {
   const [searchQuery, setSearchQuery] = useState(
     getLS('searchQuery') || formatString
   );
+  const [formActive, setFormActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState({ query: false, location: true });
+  const recent = getLS('recentSearch');
+  const inputRef = useRef();
 
   function fetchWeather(lat, long, query) {
     const dataLatLong = `/api/getWeather?lat=${lat}&long=${long}`;
     const dataQuery = `/api/getWeather?search=${query}`;
     setIsLoading(true);
+    setFormActive(false);
     fetch(!query ? dataLatLong : dataQuery)
       .then(res => res.json())
       .then(data => {
@@ -37,6 +42,12 @@ export default function Search() {
         setSearchQuery(formatQuery);
         setLS('localData', data);
         setLS('searchQuery', formatQuery);
+        setLS(
+          'recentSearch',
+          recent
+            ? [...new Set([formatQuery, ...recent.slice(0, 4)])]
+            : [formatQuery]
+        );
         setLS('lastCords', {
           lat: data.weatherData.latitude,
           long: data.weatherData.longitude,
@@ -87,11 +98,15 @@ export default function Search() {
             {getLS('searchQuery') || formatString} - Weather Forecast | wethr.co
           </title>
         )}
-        {console.log(Favicon(currently.icon))}
         <link rel="shortcut icon" href={Favicon(currently.icon)} />
       </Head>
       <form className={error.query ? 'error' : ''} onSubmit={handleSearch}>
         <input
+          ref={inputRef}
+          onFocus={() => {
+            setFormActive(true);
+          }}
+          onBlur={() => setError({ ...error, query: false })}
           autoComplete="off"
           id="search-query"
           type="search"
@@ -99,20 +114,29 @@ export default function Search() {
           value={searchQuery}
           onChange={handleChange}
         />
-        <input
-          id="search-submit"
+        <button
+          onClick={() => {
+            setSearchQuery('');
+            inputRef.current.focus();
+          }}
+          type="reset"
+          className="search-icon"
+          id="clear-input">
+          ×
+        </button>
+        <button
           disabled={isLoading}
           type="submit"
-          value=""
-          name="search"
-        />
-        <label
           aria-label={isLoading ? 'Loading' : 'Search'}
-          className="search-icon"
-          htmlFor="search-submit">
+          className="search-icon">
           {isLoading ? <LoadingIcon /> : <SearchIcon />}
-        </label>
+        </button>
         {error.query && <span>Please enter minimum 3 characters.</span>}
+        <RecentSearch
+          active={formActive}
+          setFormActive={setFormActive}
+          setSearchQuery={setSearchQuery}
+        />
       </form>
       <button
         aria-label="Auto Locate"

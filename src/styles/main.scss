@@ -16,9 +16,14 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+* {
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px $blue-focus;
+  }
+  &:focus-visible {
+    outline: $blue-focus solid 3px;
+    outline-offset: 2px;
   }
 }
 .main {
