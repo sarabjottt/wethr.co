@@ -1,5 +1,7 @@
 async function fetchWeather(lat, long) {
-  const weatherAPI = `https://api.darksky.net/forecast/${process.env.DARKSKY_API}/${lat},${long}?exclude=minutely,daily,alerts,flags`;
+  const weatherAPI = `https://api.darksky.net/forecast/${
+    process.env.DARKSKY_API
+  }/${lat},${long}?exclude=minutely,daily,alerts,flags`;
   const weatherData = await fetch(weatherAPI)
     .then(res => res.json())
     .catch(err => err.name);
@@ -27,7 +29,22 @@ function locationFormat({ data: { components: w }, data }) {
 async function getRegion(clientIP) {
   const { city, region_code, latitude: lat, longitude: long } = await fetch(
     `https://ipapi.co/${clientIP}/json/`
-  ).then(res => res.json()).catch(err => err.name);
+  )
+    .then(res => {
+      console.log(res);
+      if (res.ok) {
+        res.json();
+      } else {
+        // fallback default
+        return {
+          region_code: 'VIC',
+          city: 'Melbourne',
+          latitude: -37.81,
+          longitude: 144.9644,
+        };
+      }
+    })
+    .catch(err => console.log(err));
 
   const formatString = `${city}, ${region_code}`;
   const weatherData = await fetchWeather(lat, long);
@@ -37,7 +54,9 @@ async function getRegion(clientIP) {
 //  2 case: browser locate
 
 async function getGeocode(lat, long) {
-  const geocodeAPI = `https://api.opencagedata.com/geocode/v1/json?q=${lat},${long}&key=${process.env.GEOCODE_API}&no_annotations=1&limit=1`;
+  const geocodeAPI = `https://api.opencagedata.com/geocode/v1/json?q=${lat},${long}&key=${
+    process.env.GEOCODE_API
+  }&no_annotations=1&limit=1`;
   try {
     const {
       results: [data],
@@ -53,7 +72,9 @@ async function getGeocode(lat, long) {
 //  3 case: user query
 
 async function getSearchData(query) {
-  const forwardApi = `https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${process.env.GEOCODE_API}&no_annotations=1&limit=1`;
+  const forwardApi = `https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${
+    process.env.GEOCODE_API
+  }&no_annotations=1&limit=1`;
   const {
     results: [data],
   } = await fetch(forwardApi).then(res => res.json());
