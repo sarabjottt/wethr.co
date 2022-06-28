@@ -27,18 +27,7 @@ function locationFormat({ data: { components: w }, data }) {
 async function getRegion(clientIP) {
   const { city, region_code, latitude: lat, longitude: long } = await fetch(
     `https://ipapi.co/${clientIP}/json/`
-  ).then(res => {
-    if (res.ok) {
-      return res.json();
-  } else {
-      return {
-          region_code: 'VIC',
-          city: 'Melbourne',
-          latitude: -37.81,
-          longitude: 144.9644,
-        };
-  }
-  });
+  ).then(res => res.json()).catch(err => err.name);
 
   const formatString = `${city}, ${region_code}`;
   const weatherData = await fetchWeather(lat, long);
