@@ -26,23 +26,20 @@ function locationFormat({ data: { components: w }, data }) {
 
 async function getRegion(clientIP) {
   const { city, region_code, latitude: lat, longitude: long } = await fetch(
-    `https://freegeoip.app/json/${clientIP}`
-  ).then(res => res.json());
+    `https://ipapi.co/${clientIP}/json/`
+  ).then(res => {
+    if (res.ok) {
+      return res.json();
+  } else {
+      return {
+          region_code: 'VIC',
+          city: 'Melbourne',
+          latitude: -37.81,
+          longitude: 144.9644,
+        };
+  }
+  });
 
-  // sample return
-  // const { city, region_code, latitude: lat, longitude: long } = {
-  //   ip: '175.45.149.28',
-  //   country_code: 'AU',
-  //   country_name: 'Australia',
-  //   region_code: 'VIC',
-  //   region_name: 'Victoria',
-  //   city: 'Melbourne',
-  //   zip_code: '3001',
-  //   time_zone: 'Australia/Melbourne',
-  //   latitude: -37.81,
-  //   longitude: 144.9644,
-  //   metro_code: 0,
-  // };
   const formatString = `${city}, ${region_code}`;
   const weatherData = await fetchWeather(lat, long);
   return { weatherData, locationData: { formatString } };
