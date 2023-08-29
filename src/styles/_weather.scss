@@ -71,10 +71,12 @@
   }
 }
 .hour-summery-container {
+  text-transform: capitalize;
   font-size: 1.5rem;
   max-width: 500px;
 }
 .summery-container {
+  text-transform: capitalize;
   display: none;
   @include for-desktop {
     display: block;

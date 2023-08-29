@@ -1,72 +1,72 @@
-.bg-clear-day {
+.bg-Clear._01d {
   background-image: linear-gradient(180deg, #ffe4a3 0%, #ffb591 100%);
 }
-.bg-clear-night {
+.bg-Clear._01n {
   color: $color-white;
   background-image: linear-gradient(0deg, #0e3d59 0%, #000c17 100%);
 }
-.bg-rain {
+.bg-Rain {
   background-image: linear-gradient(180deg, #1ac5e1 0%, #2d97f4 100%);
 }
-.bg-snow {
+.bg-Snow {
   background-image: linear-gradient(190deg, #8df4fb 0%, #e2e2e2 60%);
 }
-.bg-sleet {
+.bg-Haze {
   background-image: linear-gradient(180deg, #95fdef 0%, #69bfe0 100%);
 }
-.bg-wind {
+.bg-Dust {
   background-image: linear-gradient(190deg, #dcdcdc 0%, #f1f1f1 100%);
 }
-.bg-fog {
+.bg-Fog {
   background-image: linear-gradient(190deg, #b3dfe2 0%, #a8acb1 100%);
 }
-.bg-cloudy {
+.bg-Clouds {
   background-image: linear-gradient(45deg, #9ea7ab 0%, #bfccd4 100%);
 }
-.bg-partly-cloudy-day {
+.bg-Clouds._02d {
   background-image: linear-gradient(190deg, #90d8e8 0%, #83a7af 100%);
   color: $text-black;
 }
-.bg-partly-cloudy-night {
+.bg-Clouds._02n {
   background-image: linear-gradient(0deg, #0e3d59 0%, #071d31 100%);
   color: $color-white;
 }
-.bg-thunderstorm {
+.bg-Thunderstorm {
   background-image: linear-gradient(209deg, #a22cab 0%, #5410c1 100%);
   color: $color-white;
 }
 .icon-container {
-  .clear-day {
+  .Clear._01d {
     background-image: url(/assets/clear-day.svg);
   }
-  .clear-night {
+  .Clear._01n {
     background-image: url(/assets/clear-night.svg);
   }
-  .rain {
+  .Rain {
     background-image: url(/assets/rain.svg);
   }
-  .snow {
+  .Snow {
     background-image: url(/assets/snow.svg);
   }
   .sleet {
     background-image: url(/assets/sleet.svg);
   }
-  .wind {
+  .Dust {
     background-image: url(/assets/wind.svg);
   }
-  .fog {
+  .Fog, .Haze {
     background-image: url(/assets/wind.svg);
   }
-  .cloudy {
+  .Clouds {
     background-image: url(/assets/cloudy.svg);
   }
-  .partly-cloudy-day {
+  .Clouds._04d {
     background-image: url(/assets/partly-cloudy-day.svg);
   }
-  .partly-cloudy-night {
+  .Clouds._04n {
     background-image: url(/assets/partly-cloudy-night.svg);
   }
-  .thunderstorm {
+  .Thunderstorm {
     background-image: url(/assets/thunderstorm.svg);
   }
 }

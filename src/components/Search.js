@@ -16,7 +16,7 @@ export default function Search() {
     setWeather,
     weather: {
       locationData: { formatString },
-      weatherData: { currently },
+      weatherData: { weather },
     },
   } = useContext(GlobalState);
 
@@ -30,8 +30,8 @@ export default function Search() {
   const inputRef = useRef();
 
   function fetchWeather(lat, long, query) {
-    const dataLatLong = `/api/getWeather?lat=${lat}&long=${long}`;
-    const dataQuery = `/api/getWeather?search=${query}`;
+    const dataLatLong = `/api/owm?lat=${lat}&long=${long}`;
+    const dataQuery = `/api/owm?search=${query}`;
     setIsLoading(true);
     setFormActive(false);
     fetch(!query ? dataLatLong : dataQuery)
@@ -98,7 +98,7 @@ export default function Search() {
             {getLS('searchQuery') || formatString} - Weather Forecast | wethr.co
           </title>
         )}
-        <link rel="shortcut icon" href={Favicon(currently.icon)} />
+        <link rel="shortcut icon" href={Favicon(weather[0].icon)} />
       </Head>
       <form className={error.query ? 'error' : ''} onSubmit={handleSearch}>
         <input

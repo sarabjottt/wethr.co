@@ -10,21 +10,22 @@ export default function Weather() {
     isFern,
     setIsFern,
     weather: {
-      weatherData: { currently: c, hourly },
+      // weatherData: { currently: c, hourly },
+      weatherData: { main: c, visibility, wind, rain, weather },
     },
   } = useContext(GlobalState);
 
   return (
     <div
-      style={{ minHeight: window.outerHeight }}
-      className={`app-wrapper bg-${c.icon}`}>
+      // style={{ minHeight: window.outerHeight }}
+      className={`app-wrapper bg-${weather[0].main} _${weather[0].icon}`}>
       <div className="search-container">
         <Search />
       </div>
       <div className="hero-container">
         <div className="current-temp">
           <h1>
-            {isFern ? Math.round(c.temperature) : toCelsius(c.temperature)}°
+            {isFern ? Math.round(c.temp) : toCelsius(c.temp)}°
           </h1>
         </div>
         <div className="apparent-temp">
@@ -32,18 +33,18 @@ export default function Weather() {
             Feels like{' '}
             <b>
               {isFern
-                ? Math.round(c.apparentTemperature)
-                : toCelsius(c.apparentTemperature)}
+                ? Math.round(c.feels_like)
+                : toCelsius(c.feels_like)}
               °
             </b>
           </p>
         </div>
       </div>
       <div className="hour-summery-container">
-        <p>{hourly.summary}</p>
+        <p>{weather[0].description}</p>
       </div>
       <div className="chart-container">
-        <Chart />
+        {/* <Chart /> */}
       </div>
       <div className="meta-container">
         <ul className="meta-label">
@@ -53,18 +54,18 @@ export default function Weather() {
           <li>Rain</li>
         </ul>
         <ul className="meta-value">
-          <li>{Math.round(c.humidity * 100)}%</li>
+          <li>{Math.round(c.humidity)}%</li>
           {isFern ? (
-            <li>{Math.round(c.visibility)} mph</li>
+            <li>{Math.round(visibility/1609)} miles</li>
           ) : (
-            <li>{Math.round(c.visibility * 1.609)} km/h</li>
+            <li>{Math.round(visibility/1000)} km</li>
           )}
           {isFern ? (
-            <li>{Math.round(c.windSpeed)} mph</li>
+            <li>{Math.round(wind.speed)} mph</li>
           ) : (
-            <li>{Math.round(c.windSpeed * 1.609)} km/h</li>
+            <li>{Math.round(wind.speed * 1.609)} km/h</li>
           )}
-          <li>{Math.round(c.precipProbability * 100)}%</li>
+          {rain && <li>{Object.values(rain)[0]} mm/1h</li>}
         </ul>
       </div>
       <div className="switch-container">
@@ -77,10 +78,10 @@ export default function Weather() {
         />
       </div>
       <div className="icon-container">
-        <div className={`weather-icon ${c.icon}`} />
+        <div className={`weather-icon ${weather[0].main} _${weather[0].icon}`} />
       </div>
       <div className="summery-container">
-        <h2>{c.summary}</h2>
+        <h2>{weather[0].description}</h2>
       </div>
     </div>
   );
