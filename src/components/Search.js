@@ -8,15 +8,17 @@ import {
   SearchIcon,
   LocationIcon,
   Favicon,
+  toCelsius,
 } from './Helper';
 import RecentSearch from './RecentSearch';
 
 export default function Search() {
   const {
+    isFern,
     setWeather,
     weather: {
       locationData: { formatString },
-      weatherData: { weather },
+      weatherData,
     },
   } = useContext(GlobalState);
 
@@ -49,8 +51,8 @@ export default function Search() {
             : [formatQuery]
         );
         setLS('lastCords', {
-          lat: data.weatherData.latitude,
-          long: data.weatherData.longitude,
+          lat: data.weatherData.coord.lat,
+          long: data.weatherData.coord.lon,
         });
         setLS('lastCached', Date.now());
         setIsLoading(false);
@@ -95,10 +97,10 @@ export default function Search() {
       <Head>
         {formatString && (
           <title>
-            {getLS('searchQuery') || formatString} - Weather Forecast | wethr.co
+            {isFern ? Math.round(weatherData.main.temp): toCelsius(weatherData.main.temp)}° {getLS('searchQuery') || formatString} - Weather Forecast | wethr.co
           </title>
         )}
-        <link rel="shortcut icon" href={Favicon(weather[0].icon)} />
+        <link rel="shortcut icon" href={Favicon(weatherData.weather[0].icon)} />
       </Head>
       <form className={error.query ? 'error' : ''} onSubmit={handleSearch}>
         <input

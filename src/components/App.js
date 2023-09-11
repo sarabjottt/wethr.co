@@ -37,7 +37,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const strings = ['clear-night', 'partly-cloudy-night', 'thunderstorm'];
+    const strings = ['01n', '02n', '11n'];
     if (weather && strings.includes(weather.weatherData.weather[0].icon)) {
       setTheme(themes.dark);
     } else {

@@ -10,7 +10,6 @@ export default function Weather() {
     isFern,
     setIsFern,
     weather: {
-      // weatherData: { currently: c, hourly },
       weatherData: { main: c, visibility, wind, rain, weather },
     },
   } = useContext(GlobalState);
@@ -44,7 +43,7 @@ export default function Weather() {
         <p>{weather[0].description}</p>
       </div>
       <div className="chart-container">
-        {/* <Chart /> */}
+        <Chart />
       </div>
       <div className="meta-container">
         <ul className="meta-label">
@@ -65,7 +64,7 @@ export default function Weather() {
           ) : (
             <li>{Math.round(wind.speed * 1.609)} km/h</li>
           )}
-          {rain && <li>{Object.values(rain)[0]} mm/1h</li>}
+          {rain ? <li>{Object.values(rain)[0]} mm/1h</li> : <li>0 mm/1h</li>}
         </ul>
       </div>
       <div className="switch-container">

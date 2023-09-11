@@ -69,27 +69,27 @@ export const LocationIcon = ({ size = 24, color = '#000000' }) => (
 
 export const Favicon = icon => {
   switch (icon) {
-    case 'clear-day':
+    case '01d':
       return '/favicons/clear-day.png';
-    case 'clear-night':
+    case '01n':
       return '/favicons/clear-night.png';
-    case 'rain':
+    case '10d' || '10n':
       return '/favicons/rain.png';
-    case 'snow':
+    case '13d' || '13n':
       return '/favicons/snow.png';
     case 'sleet':
       return '/favicons/sleet.png';
-    case 'wind':
+    case '50d' || '50n':
       return '/favicons/wind.png';
     case 'fog':
       return '/favicons/fog.png';
-    case 'cloudy':
+    case '03d' || '03n':
       return '/favicons/cloud.png';
-    case 'partly-cloudy-night':
+    case '04n':
       return '/favicons/partly-cloudy-night.png';
-    case 'partly-cloudy-day':
+    case '04d':
       return '/favicons/partly-cloudy-day.png';
-    case 'thunderstorm':
+    case '11d':
       return '/favicons/thunderstorm.png';
     case 'tornado':
       return '/favicons/tornado.png';
